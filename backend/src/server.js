@@ -3,6 +3,7 @@
 // Funciona como uma porta de entrada onde podemos enviar requisicoes e receber respostas.
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const routes = require('./routes');
 
@@ -15,6 +16,8 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-twxu2.mongodb.net/o
 
 // Eh necessario informar ao express que as requisicoes vao estar em json
 server.use(express.json());
+// Permite que a aplicacao seja acessada por qualquer endereco
+server.use(cors());
 server.use(routes);
 
 
